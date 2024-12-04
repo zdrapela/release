@@ -100,10 +100,31 @@ tests:
 - as: e2e-tests-nightly-aks
   cron: 0 7 * * *
   steps:
-    test:
+    post:
+    - as: janus-idp-backstage-showcase-helm-aks-mapt-destroy
+      commands: |
+        export HOME="${SHARED_DIR}/mapt"
+        cd $HOME
+        azure aks destroy \
+          --project-name "aks" \
+          --backed-url "file:///workspace"
+      credentials:
+      - mount_path: /tmp/secrets
+        name: rhdh
+        namespace: test-credentials
+      from: mapt
+      resources:
+        limits:
+          cpu: "2"
+          memory: 6Gi
+        requests:
+          cpu: "2"
+          memory: 6Gi
+    pre:
     - as: janus-idp-backstage-showcase-helm-aks-mapt-create
       commands: |
-        cd $SHARED_DIR
+        export HOME="${SHARED_DIR}/mapt"
+        cd $HOME
         azure aks create \
           --project-name "aks" \
           --backed-url "file:///workspace" \
@@ -114,7 +135,7 @@ tests:
       - mount_path: /tmp/secrets
         name: rhdh
         namespace: test-credentials
-      from: mapt-runner
+      from: mapt
       resources:
         limits:
           cpu: "2"
@@ -122,22 +143,8 @@ tests:
         requests:
           cpu: "2"
           memory: 6Gi
+    test:
     - ref: janus-idp-backstage-showcase-helm-aks-nightly
-    - as: janus-idp-backstage-showcase-helm-aks-mapt-destroy
-      commands: "cd $SHARED_DIR\nazure aks destroy \\\n  --project-name \"aks\" \\\n
-        \ --backed-url \"file:///workspace\" \n"
-      credentials:
-      - mount_path: /tmp/secrets
-        name: rhdh
-        namespace: test-credentials
-      from: mapt-runner
-      resources:
-        limits:
-          cpu: "2"
-          memory: 6Gi
-        requests:
-          cpu: "2"
-          memory: 6Gi
 - as: e2e-tests-nightly-gke
   cron: 0 7 * * *
   steps:
