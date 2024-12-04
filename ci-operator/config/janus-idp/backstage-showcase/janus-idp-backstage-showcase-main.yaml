@@ -100,7 +100,7 @@ tests:
       commands: |
         export HOME="${SHARED_DIR}"
         cd $HOME
-        azure aks destroy \
+        mapt azure aks destroy \
           --project-name "aks" \
           --backed-url "file:///workspace"
       credentials:
@@ -123,7 +123,7 @@ tests:
       commands: |
         export HOME="${SHARED_DIR}"
         cd $HOME
-        azure aks create \
+        mapt azure aks create \
           --project-name "aks" \
           --backed-url "file:///workspace" \
           --conn-details-output "/workspace" \
