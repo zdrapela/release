@@ -98,9 +98,8 @@ tests:
     post:
     - as: janus-idp-backstage-showcase-helm-aks-nightly-mapt-destroy
       commands: |
-        export HOME WORKSPACE
-        HOME=/tmp
-        WORKSPACE=$(pwd)
+        export HOME=/tmp
+        export WORKSPACE=/tmp
         cd /tmp || exit
         mapt azure aks destroy \
           --project-name "aks" \
@@ -123,9 +122,8 @@ tests:
     pre:
     - as: janus-idp-backstage-showcase-helm-aks-nightly-mapt-create
       commands: |
-        export HOME WORKSPACE
-        HOME=/tmp
-        WORKSPACE=$(pwd)
+        export HOME=/tmp
+        export WORKSPACE=/tmp
         cd /tmp || exit
         mapt azure aks create \
           --project-name "aks" \
