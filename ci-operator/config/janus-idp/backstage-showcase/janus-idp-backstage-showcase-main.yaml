@@ -104,7 +104,7 @@ tests:
         cd /tmp || exit
         mapt azure aks destroy \
           --project-name "aks" \
-          --backed-url "file:///${HOME}"
+          --backed-url "file://${HOME}"
       credentials:
       - mount_path: /tmp/secrets
         name: rhdh
@@ -129,7 +129,7 @@ tests:
         cd /tmp || exit
         mapt azure aks create \
           --project-name "aks" \
-          --backed-url "file:///${HOME}" \
+          --backed-url "file://${HOME}" \
           --conn-details-output "${SHARED_DIR}" \
           --spot \
           --enable-app-routing
