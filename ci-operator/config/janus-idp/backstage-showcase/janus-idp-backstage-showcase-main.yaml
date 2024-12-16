@@ -100,6 +100,8 @@ tests:
     - as: janus-idp-backstage-showcase-helm-aks-nightly-mapt-destroy
       commands: |
         WORKDIR=/opt/mapt/run
+        echo $PWD
+        cd /opt/mapt/run
         export AZURE_STORAGE_ACCOUNT=$(cat /tmp/secrets/AZURE_STORAGE_ACCOUNT)
         export AZURE_STORAGE_BLOB=$(cat /tmp/secrets/AZURE_STORAGE_BLOB)
         export AZURE_STORAGE_KEY=$(cat /tmp/secrets/AZURE_STORAGE_KEY)
@@ -126,6 +128,8 @@ tests:
     - as: janus-idp-backstage-showcase-helm-aks-nightly-mapt-create
       commands: |
         WORKDIR=/opt/mapt/run
+        echo $PWD
+        cd /opt/mapt/run
         export AZURE_STORAGE_ACCOUNT=$(cat /tmp/secrets/AZURE_STORAGE_ACCOUNT)
         export AZURE_STORAGE_BLOB=$(cat /tmp/secrets/AZURE_STORAGE_BLOB)
         export AZURE_STORAGE_KEY=$(cat /tmp/secrets/AZURE_STORAGE_KEY)
