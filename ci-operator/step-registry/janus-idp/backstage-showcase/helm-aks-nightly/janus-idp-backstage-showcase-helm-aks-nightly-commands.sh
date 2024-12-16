@@ -18,6 +18,7 @@ cd backstage-showcase || exit
 
 ls $SHARED_DIR
 KUBECONFIG=$SHARED_DIR/kubeconfig
+echo $KUBECONFIG
 oc whoami
 
 bash ./.ibm/pipelines/openshift-ci-tests.sh
