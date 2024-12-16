@@ -109,7 +109,7 @@ tests:
         export ARM_TENANT_ID=$(cat /tmp/secrets/ARM_TENANT_ID)
         mapt azure aks destroy \
           --project-name "aks" \
-          --backed-url "azblob://${AZURE_STORAGE_BLOB}/aks-1"
+          --backed-url "azblob://${AZURE_STORAGE_BLOB}/aks-2"
       credentials:
       - mount_path: /tmp/secrets
         name: rhdh
@@ -135,7 +135,7 @@ tests:
         export ARM_TENANT_ID=$(cat /tmp/secrets/ARM_TENANT_ID)
         mapt azure aks create \
           --project-name "aks" \
-          --backed-url "azblob://${AZURE_STORAGE_BLOB}/aks-1" \
+          --backed-url "azblob://${AZURE_STORAGE_BLOB}/aks-2" \
           --conn-details-output "${SHARED_DIR}" \
           --spot \
           --enable-app-routing
