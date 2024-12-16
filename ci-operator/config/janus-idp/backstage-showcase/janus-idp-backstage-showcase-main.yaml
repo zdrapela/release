@@ -109,6 +109,7 @@ tests:
         export ARM_CLIENT_SECRET=$(cat /tmp/secrets/ARM_CLIENT_SECRET)
         export ARM_SUBSCRIPTION_ID=$(cat /tmp/secrets/ARM_SUBSCRIPTION_ID)
         export ARM_TENANT_ID=$(cat /tmp/secrets/ARM_TENANT_ID)
+        export PULUMI_CONFIG_PASSPHRASE="passphrase"
         mapt azure aks destroy \
           --project-name "aks" \
           --backed-url "azblob://${AZURE_STORAGE_BLOB}/aks-2"
@@ -137,6 +138,7 @@ tests:
         export ARM_CLIENT_SECRET=$(cat /tmp/secrets/ARM_CLIENT_SECRET)
         export ARM_SUBSCRIPTION_ID=$(cat /tmp/secrets/ARM_SUBSCRIPTION_ID)
         export ARM_TENANT_ID=$(cat /tmp/secrets/ARM_TENANT_ID)
+        export PULUMI_CONFIG_PASSPHRASE="passphrase"
         mapt azure aks create \
           --project-name "aks" \
           --backed-url "azblob://${AZURE_STORAGE_BLOB}/aks-2" \
