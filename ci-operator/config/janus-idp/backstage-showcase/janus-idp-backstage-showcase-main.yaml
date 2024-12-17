@@ -110,7 +110,7 @@ tests:
         cd /opt/mapt/run
         mapt azure aks destroy \
           --project-name "aks" \
-          --backed-url "azblob://${AZURE_STORAGE_BLOB}/aks-2"
+          --backed-url "azblob://${AZURE_STORAGE_BLOB}/aks-3"
       credentials:
       - mount_path: /tmp/secrets
         name: rhdh
@@ -137,7 +137,7 @@ tests:
         cd /opt/mapt/run
         mapt azure aks create \
           --project-name "aks" \
-          --backed-url "azblob://${AZURE_STORAGE_BLOB}/aks-2" \
+          --backed-url "azblob://${AZURE_STORAGE_BLOB}/aks-3" \
           --conn-details-output "${SHARED_DIR}" \
           --spot \
           --enable-app-routing
