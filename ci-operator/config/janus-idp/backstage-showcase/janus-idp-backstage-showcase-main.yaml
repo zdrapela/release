@@ -99,8 +99,6 @@ tests:
     post:
     - as: janus-idp-backstage-showcase-helm-aks-nightly-mapt-destroy
       commands: |
-        export PULUMI_HOME=/opt/mapt/run
-        export PULUMI_CONFIG_PASSPHRASE="passphrase"
         export AZURE_STORAGE_ACCOUNT=$(cat /tmp/secrets/AZURE_STORAGE_ACCOUNT)
         export AZURE_STORAGE_BLOB=$(cat /tmp/secrets/AZURE_STORAGE_BLOB)
         export AZURE_STORAGE_KEY=$(cat /tmp/secrets/AZURE_STORAGE_KEY)
@@ -109,11 +107,7 @@ tests:
         export ARM_SUBSCRIPTION_ID=$(cat /tmp/secrets/ARM_SUBSCRIPTION_ID)
         export ARM_TENANT_ID=$(cat /tmp/secrets/ARM_TENANT_ID)
         WORKDIR=/opt/mapt/run
-        env
-        set -x
         cd /opt/mapt/run
-        echo $PWD
-        pwd
         mapt azure aks destroy \
           --project-name "aks" \
           --backed-url "azblob://${AZURE_STORAGE_BLOB}/aks-2"
@@ -132,8 +126,6 @@ tests:
     pre:
     - as: janus-idp-backstage-showcase-helm-aks-nightly-mapt-create
       commands: |
-        export PULUMI_HOME=/opt/mapt/run
-        export PULUMI_CONFIG_PASSPHRASE="passphrase"
         export AZURE_STORAGE_ACCOUNT=$(cat /tmp/secrets/AZURE_STORAGE_ACCOUNT)
         export AZURE_STORAGE_BLOB=$(cat /tmp/secrets/AZURE_STORAGE_BLOB)
         export AZURE_STORAGE_KEY=$(cat /tmp/secrets/AZURE_STORAGE_KEY)
@@ -142,11 +134,7 @@ tests:
         export ARM_SUBSCRIPTION_ID=$(cat /tmp/secrets/ARM_SUBSCRIPTION_ID)
         export ARM_TENANT_ID=$(cat /tmp/secrets/ARM_TENANT_ID)
         WORKDIR=/opt/mapt/run
-        env
-        set -x
         cd /opt/mapt/run
-        echo $PWD
-        pwd
         mapt azure aks create \
           --project-name "aks" \
           --backed-url "azblob://${AZURE_STORAGE_BLOB}/aks-2" \
